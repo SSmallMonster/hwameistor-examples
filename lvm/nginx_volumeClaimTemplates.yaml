@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: nginx-local-storage-lvm
+  labels:
+    app: nginx-local-storage-lvm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-local-storage-lvm
+  volumeClaimTemplates:
+    - metadata:
+        name: html-root
+      spec:
+        storageClassName: hwameistor-storage-lvm-hdd
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 5Gi
+  template:
+    metadata:
+      labels:
+        app: nginx-local-storage-lvm
+      name: nginx-local-storage-lvm
+    spec:
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 0
+      containers:
+        - image: nginx:latest
+          imagePullPolicy: IfNotPresent
+          name: nginx
+          ports:
+            - containerPort: 80
+          command:
+            - sh
+            - -xc
+            - |
+              VOL="$( df | grep /usr/share/nginx/html | awk '{print $1,$NF}' )"
+              echo "<center><h1>Demo volume: ${VOL}</h1></center>" > /usr/share/nginx/html/index.html
+              nginx -g "daemon off;"
+          volumeMounts:
+            - name: html-root
+              mountPath: /usr/share/nginx/html
+          resources:
+            limits:
+              cpu: '100m'

@@ -1,0 +1,9 @@
+apiVersion: hwameistor.io/v1alpha1
+kind: LocalDiskClaim
+metadata:
+  name: k8s-node1
+spec:
+  nodeName: k8s-node1
+  owner: local-disk-manager
+  description:
+    diskType: HDD

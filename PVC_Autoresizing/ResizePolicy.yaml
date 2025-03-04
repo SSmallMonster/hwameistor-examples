@@ -1,0 +1,11 @@
+apiVersion: hwameistor.io/v1alpha1
+kind: ResizePolicy
+metadata:
+  name: ns-selector
+spec:
+  warningThreshold: 60
+  resizeThreshold: 80
+  nodePoolUsageLimit: 90
+  namespaceSelector:
+    matchLabels:
+      kubernetes.io/metadata.name: default

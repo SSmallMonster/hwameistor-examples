@@ -1,0 +1,7 @@
+apiVersion: hwameistor.io/v1alpha1
+kind: LocalVolumeSnapshotRestore
+metadata:
+  name: rollback-test
+spec:
+  sourceVolumeSnapshot: snapcontent-0fc17697-68ea-49ce-8e4c-7a791e315110  #要进行回滚操作的本地卷快照
+  restoreType: "rollback"

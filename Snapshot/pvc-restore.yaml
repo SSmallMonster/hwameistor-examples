@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: local-storage-pvc-lvm-restore
+spec:
+  storageClassName: local-storage-hdd-lvm
+  dataSource:
+    name: snapshot-local-storage-pvc-lvm
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

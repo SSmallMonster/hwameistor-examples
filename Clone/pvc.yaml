@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hwameistor-lvm-volume-clone
+spec:
+  dataSource:
+    # 必须提供已经 Bound 的数据卷
+    name: local-storage-pvc-lvm
+    kind: PersistentVolumeClaim
+  storageClassName: local-storage-hdd-lvm
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi

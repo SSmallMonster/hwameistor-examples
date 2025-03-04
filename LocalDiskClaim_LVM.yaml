@@ -1,0 +1,10 @@
+apiVersion: hwameistor.io/v1alpha1
+kind: LocalDiskClaim
+metadata:
+  name: node-1
+  namespace: kube-system
+spec:
+  owner: local-storage
+  nodeName: k8s-node1
+  description:
+    diskType: HDD

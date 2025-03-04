@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hwameistor-storage-lvm-hdd-qos
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: hwameistor-storage-lvm-hdd-qos
+  resources:
+    requests:
+      storage: 1Gi
