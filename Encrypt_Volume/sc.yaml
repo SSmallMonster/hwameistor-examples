@@ -1,0 +1,17 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: local-storage-hdd-encrypt
+provisioner: lvm.hwameistor.io
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true
+reclaimPolicy: Delete
+parameters:
+  encryptSecret: hwameistor/hwameistor-encrypt-secret
+  encryptType: LUKS
+  replicaNumber: "1"
+  poolClass: "HDD"
+  poolType: "REGULAR"
+  volumeKind: "LVM"
+  striped: "true"
+  csi.storage.k8s.io/fstype: "xfs"

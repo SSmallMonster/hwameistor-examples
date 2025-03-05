@@ -1,0 +1,8 @@
+apiVersion: hwameistor.io/v1alpha1
+kind: LocalVolumeConvert
+metadata:
+  namespace: default
+  name: localvolumeconvert-1
+spec:
+  volumeName: pvc-10c50550-2bff-4117-a152-a4c1264e031a
+  replicaNumber: 2

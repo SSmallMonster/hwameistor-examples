@@ -1,0 +1,11 @@
+apiVersion: hwameistor.io/v1alpha1
+kind: LocalVolumeMigrate
+metadata:
+  namespace: default
+  name: localvolumemigrate-1
+spec:
+  targetNodesSuggested:
+    - k8s-node2
+  sourceNode: k8s-node1
+  volumeName: pvc-5c1d12ba-7394-4773-9574-16d3c3e4f1e5
+  migrateAllVols: true
