@@ -4,7 +4,7 @@ metadata:
   name: node-1
   namespace: kube-system
 spec:
-  owner: local-storage
+  owner: local-storage   # localstoragenode 名称
   nodeName: k8s-node1
   description:
-    diskType: HDD
+    diskType: HDD   # 磁盘种类
